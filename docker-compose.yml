@@ -1,12 +1,11 @@
-version: '3'
 services:
   grpc-server:
     build: .
     ports:
       - "50051:50051"
-  envoy:
-    image: envoyproxy/envoy:v1.19.1
-    volumes:
-      - ./gateway/envoy.yaml:/etc/envoy/envoy.yaml
-    ports:
-      - "8080:8080"
+#  envoy:
+#    image: envoyproxy/envoy:v1.19.1
+#    volumes:
+#      - ./gateway/envoy.yaml:/etc/envoy/envoy.yaml
+#    ports:
+#      - "8080:8080"

@@ -2,15 +2,15 @@ syntax = "proto3";
 
 package customer;
 
-import "google/api/annotations.proto";
+//import "google/api/annotations.proto";
 
-service CustomerService {
-  rpc GetCustomer (CustomerRequest) returns (CustomerResponse) {
-    option (google.api.http) = {
-      get: "/v1/customers/{id}"
-    };
-  }
-}
+//service CustomerService {
+//  rpc GetCustomer (CustomerRequest) returns (CustomerResponse) {
+//    option (google.api.http) = {
+//      get: "/v1/customers/{id}"
+//    };
+//  }
+//}
 
 message CustomerRequest {
   string id = 1;
@@ -19,4 +19,10 @@ message CustomerRequest {
 message CustomerResponse {
   string id = 1;
   string name = 2;
+}
+
+message Product {
+    string id = 1;
+    string name = 2;
+    double price = 3;
 }

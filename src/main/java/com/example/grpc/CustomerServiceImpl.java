@@ -1,7 +1,6 @@
 package com.example.grpc;
 
 import customer.Customer;
-import customer.CustomerServiceGrpc;
 import io.grpc.stub.StreamObserver;
 import net.devh.boot.grpc.server.service.GrpcService;
 
@@ -9,7 +8,7 @@ import net.devh.boot.grpc.server.service.GrpcService;
 public class CustomerServiceImpl extends CustomerServiceGrpc.CustomerServiceImplBase {
 
     @Override
-    public void getCustomer( Customer.CustomerRequest request, StreamObserver<Customer.CustomerResponse> responseObserver) {
+    public void getCustomer(Customer.CustomerRequest request, StreamObserver<Customer.CustomerResponse> responseObserver) {
         Customer.CustomerResponse response = Customer.CustomerResponse.newBuilder()
                 .setId(request.getId())
                 .setName("John Doe")

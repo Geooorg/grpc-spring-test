@@ -1,19 +1,19 @@
 package com.example.grpc;
 
-import customer.Customer;
-import io.grpc.stub.StreamObserver;
 import net.devh.boot.grpc.server.service.GrpcService;
 
 @GrpcService
-public class CustomerServiceImpl extends CustomerServiceGrpc.CustomerServiceImplBase {
+public class CustomerServiceImpl
+//        extends CustomerServiceGrpc.CustomerServiceImplBase
+{
 
-    @Override
-    public void getCustomer(Customer.CustomerRequest request, StreamObserver<Customer.CustomerResponse> responseObserver) {
-        Customer.CustomerResponse response = Customer.CustomerResponse.newBuilder()
-                .setId(request.getId())
-                .setName("John Doe")
-                .build();
-        responseObserver.onNext(response);
-        responseObserver.onCompleted();
-    }
+//    @Override
+//    public void getCustomer(Customer.CustomerRequest request, StreamObserver<Customer.CustomerResponse> responseObserver) {
+//        Customer.CustomerResponse response = Customer.CustomerResponse.newBuilder()
+//                .setId(request.getId())
+//                .setName("John Doe")
+//                .build();
+//        responseObserver.onNext(response);
+//        responseObserver.onCompleted();
+//    }
 }

@@ -30,7 +30,6 @@
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java</artifactId>
             <version>4.29.3</version>
-<!--            <version>3.24.1</version>-->
         </dependency>
 
         <dependency>
@@ -49,12 +48,6 @@
 
     <build>
 
-        <resources>
-            <resource>
-                <directory>${project.basedir}/src/main/resources</directory>
-            </resource>
-        </resources>
-
         <extensions>
             <extension>
                 <groupId>kr.motd.maven</groupId>
@@ -64,6 +57,25 @@
         </extensions>
 
         <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${maven-jar-plugin.version}</version>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <app-version>${project.version}</app-version>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${maven-resources-plugin.version}</version>
+            </plugin>
 
             <plugin>
                 <groupId>org.xolstice.maven.plugins</groupId>
@@ -89,13 +101,11 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-
                 <configuration>
-                    <mainClass>com.example.grpc.GrpcApplication</mainClass>
+                    <!--                    <mainClass>com.example.grpc.GrpcApplication</mainClass>-->
                 </configuration>
             </plugin>
 
-            <!-- Plugin für zusätzliche Quellen (damit src/main/java + Protobuf beachtet werden) -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
@@ -109,7 +119,6 @@
                         <configuration>
                             <sources>
                                 <source>${project.build.directory}/generated-sources/protobuf/java</source>
-                                <source>src/main/java</source>
                             </sources>
                         </configuration>
                     </execution>
@@ -119,20 +128,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <compileSourceRoots>
-                        <compileSourceRoot>${project.basedir}/target/generated-sources/protobuf/java</compileSourceRoot>
-                        <source>${java.version}</source>
-                        <target>${java.version}</target>
-                    </compileSourceRoots>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                            <version>${lombok.version}</version>
-                        </path>
-                    </annotationProcessorPaths>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
 

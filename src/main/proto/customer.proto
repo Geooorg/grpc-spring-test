@@ -1,16 +1,17 @@
 syntax = "proto3";
 
+option java_multiple_files = true;
 package customer;
 
-//import "google/api/annotations.proto";
+import "google/api/annotations.proto";
 
-//service CustomerService {
-//  rpc GetCustomer (CustomerRequest) returns (CustomerResponse) {
-//    option (google.api.http) = {
-//      get: "/v1/customers/{id}"
-//    };
-//  }
-//}
+service CustomerService {
+  rpc GetCustomer (CustomerRequest) returns (CustomerResponse) {
+    option (google.api.http) = {
+      get: "/v1/customers/{id}"
+    };
+  }
+}
 
 message CustomerRequest {
   string id = 1;
